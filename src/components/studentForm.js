@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Select, Button } from 'antd';
-
 const { Option } = Select;
+const { TextArea } = Input;
 
 
 class StudentInfo extends React.Component {
@@ -91,7 +91,7 @@ class StudentInfo extends React.Component {
                                 message: 'Please add anything you know about the person',
                             },
                         ],
-                    })(<Input />)}
+                    })(<TextArea rows={4} />)}
                 </Form.Item>
 
                 <Form.Item label="Interest Level">
