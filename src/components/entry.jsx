@@ -19,11 +19,12 @@ class Entry extends Component {
     classes += this.state.count === 0 ? "warning" : "primary";
     return classes;
   }
-  addButton() {}
   render() {
+    console.log(this.props.info.note);
     return (
       <div>
-        <button OnClick={this.addButton()}>Add Entry</button>
+        <h1 style={{ color: "blue" }}>{this.props.info.note}</h1>
+        {/* <button OnClick={this.addButton()}>Add Entry</button> */}
         <h1>{this.formatCount()}</h1>
 
         <button
