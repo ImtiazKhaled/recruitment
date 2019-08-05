@@ -26,8 +26,9 @@ class Student extends React.Component {
               Add Entry
             </Button>
           } */}
-          <h1>{this.props.info.email}</h1>
-          <h2>{this.props.info.gender}</h2>
+          <h1>{this.props.info.phone}</h1>
+          <h2>{this.props.info.notes}</h2>
+          <h2>{this.props.info.interestLevel}</h2>
           <div>
             {this.state.entries.map(entry => (
               <Entry info={entry} />
