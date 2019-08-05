@@ -1,30 +1,34 @@
 import React from 'react';
-import { Collapse, Button } from 'antd';
+import { Collapse } from 'antd';
 import Student from './student';
+import StudentNew from './studentNew';
 const { Panel } = Collapse;
 
 class Students extends React.Component {
     state = {
-        students: [
-            { "id": 1, "first_name": "Kaitlyn", "last_name": "Hadrill", "email": "khadrill0@uiuc.edu", "gender": "Female" },
-            { "id": 2, "first_name": "Murdock", "last_name": "Comins", "email": "mcomins1@cam.ac.uk", "gender": "Male" },
-            { "id": 3, "first_name": "Georgi", "last_name": "Taplin", "email": "gtaplin2@fotki.com", "gender": "Male" },
-            { "id": 4, "first_name": "Roth", "last_name": "Wankel", "email": "rwankel3@delicious.com", "gender": "Male" },
-            { "id": 5, "first_name": "Noelle", "last_name": "Chazier", "email": "nchazier4@vimeo.com", "gender": "Female" },
-            { "id": 6, "first_name": "Konrad", "last_name": "Pleasance", "email": "kpleasance5@noaa.gov", "gender": "Male" },
-            { "id": 7, "first_name": "Ulick", "last_name": "Weare", "email": "uweare6@bloglovin.com", "gender": "Male" },
-            { "id": 8, "first_name": "Ado", "last_name": "Niset", "email": "aniset7@newsvine.com", "gender": "Male" },
-            { "id": 9, "first_name": "Cyndi", "last_name": "Lax", "email": "clax8@linkedin.com", "gender": "Female" },
-            { "id": 10, "first_name": "Truda", "last_name": "Crunkhurn", "email": "tcrunkhurn9@cdbaby.com", "gender": "Female" }
-        ]
+        students:
+            [
+                { "id": 1, "name": "Virgina Dootson", "phone": "258-514-9711", "notes": "core", "interestLevel": "Kinda" },
+                { "id": 2, "name": "Kettie Fallows", "phone": "826-430-4783", "notes": "Open-architected", "interestLevel": "Alot" },
+                { "id": 3, "name": "Sherwynd Carlick", "phone": "429-535-8582", "notes": "throughput", "interestLevel": "NotMuch" },
+                { "id": 4, "name": "Sherwynd Oram", "phone": "716-944-2727", "notes": "zero administration", "interestLevel": "Alot" },
+                { "id": 5, "name": "Salomon Victoria", "phone": "894-798-6827", "notes": "coherent", "interestLevel": "Alot" },
+                { "id": 6, "name": "Annis Matovic", "phone": "414-779-6902", "notes": "Public-key", "interestLevel": "NotMuch" },
+                { "id": 7, "name": "Linc Siegertsz", "phone": "241-791-0263", "notes": "grid-enabled", "interestLevel": "Alot" },
+                { "id": 8, "name": "Rodie Thyng", "phone": "971-870-7928", "notes": "workforce", "interestLevel": "Kinda" },
+                { "id": 9, "name": "Pat Matula", "phone": "323-833-8956", "notes": "Total", "interestLevel": "Kinda" },
+                { "id": 10, "name": "Faun Theuss", "phone": "178-565-3698", "notes": "next generation", "interestLevel": "NotMuch" }
+            ]
     }
 
     addStudent = e => {
-        const student = { "id": 11, "first_name": "Candie", "last_name": "Sibille", "email": "csibille1@wordpress.com", "gender": "Female" };
+        const student = {
+            ...e,
+            id: this.state.students.length + 1
+        };
         let students = [
             ...this.state.students, student
         ]
-        console.log(this.state.students)
         this.setState({
             students: students
         })
@@ -33,13 +37,13 @@ class Students extends React.Component {
     render() {
         return (
             <div>
-                <Button onClick={this.addStudent}> Add Student </Button>
+                <StudentNew addStudent={this.addStudent} />
                 <Collapse>
                     {
                         this.state.students.map(
                             student =>
-                                <Panel header={student.first_name} key={student.id}>
-                                    <Student info={student} />
+                                <Panel header={student.name} key={student.id}>
+                                    <Student addStudent={this.addStudent} info={student} />
                                 </Panel>
                         )
                     }
