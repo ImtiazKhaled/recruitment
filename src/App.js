@@ -1,13 +1,20 @@
 import React from "react";
-// import logo from './logo.svg';
-import {} from "./components/students";
+import { } from "./components/students";
 import "./App.css";
-import { Button } from "antd";
 import "bootstrap/dist/css/bootstrap.css";
 import Students from "./components/students";
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import RootReducer from './redux/rootReducer';
+
+const store = createStore(RootReducer);
 
 function App() {
-  return <Students />;
+  return (
+    <Provider store={store}>
+      <Students />;
+    </Provider>
+  );
 }
 
 export default App;
