@@ -6,7 +6,6 @@ class EntryForm extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // console.log("Received values of form: ", values);
         this.props.addEntry(values);
       }
     });
@@ -34,4 +33,4 @@ class EntryForm extends Component {
     );
   }
 }
-export const EntryField = Form.create({ name: "coordinated" })(EntryForm);
+export const EntryField = Form.create({ name: "entry" })(EntryForm);

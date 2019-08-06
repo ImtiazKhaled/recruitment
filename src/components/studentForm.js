@@ -7,7 +7,6 @@ const { TextArea } = Input;
 class StudentInfo extends React.Component {
     state = {
         confirmDirty: false,
-        autoCompleteResult: [],
     };
 
     handleSubmit = e => {
@@ -43,14 +42,6 @@ class StudentInfo extends React.Component {
                 },
             },
         };
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-        })(
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>,
-        );
 
         return (
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -80,7 +71,7 @@ class StudentInfo extends React.Component {
                 <Form.Item label="Phone Number">
                     {getFieldDecorator('phone', {
                         rules: [{ required: true, message: 'Please input the persons phone number' }],
-                    })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
+                    })(<Input style={{ width: '100%' }} />)}
                 </Form.Item>
 
                 <Form.Item label="Notes" hasFeedback>

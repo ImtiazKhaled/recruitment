@@ -1,8 +1,7 @@
 import React from "react";
 import Entry from "./entry";
-import { Input, Button } from "antd";
+import { Input } from "antd";
 import { EntryField } from "./entryField";
-
 const { Search } = Input;
 
 class Student extends React.Component {
@@ -20,17 +19,12 @@ class Student extends React.Component {
       <React.Fragment>
         <div>
           <EntryField addEntry={this.addEntry} />
-          {/* <Input placeholder="Type" />
-          {
-            <Button type="primary" onClick={this.addButton}>
-              Add Entry
-            </Button>
-          } */}
           <h1>{this.props.info.phone}</h1>
           <h2>{this.props.info.notes}</h2>
           <h2>{this.props.info.interestLevel}</h2>
+          <h2>{this.props.info.referrer}</h2>
           <div>
-            {this.state.entries.map(entry => (
+            {this.props.info.entries.map(entry => (
               <Entry info={entry} />
             ))}
           </div>
