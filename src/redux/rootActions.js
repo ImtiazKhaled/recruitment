@@ -4,3 +4,17 @@ export const AddStudent = (student) => {
         student
     }
 }
+
+export const AddEntry = (entry) => {
+    return {
+        type: 'ADD_ENTRY',
+        entry
+    }
+}
+
+export const IncrementEntry = (student) => {
+    return {
+        type: 'INCREMENT_ENTRY',
+        student
+    }
+}

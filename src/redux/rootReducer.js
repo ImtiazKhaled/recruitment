@@ -9,8 +9,14 @@ const initialState = {
             interestLevel: "Kinda",
             entries: [
                 {
-                    note: 'hello',
-                    count: 0
+                    id: '1',
+                    note: 'party',
+                    count: 2
+                },
+                {
+                    id: '2',
+                    note: 'recruitment',
+                    count: 2
                 },
             ],
             referrer: 'Nahian Alam',
@@ -21,7 +27,12 @@ const initialState = {
             phone: "826-430-4783",
             notes: "Open-architected",
             interestLevel: "Alot",
-            entries: [],
+            entries: [
+                {
+                    note: 'meeting',
+                    count: '10',
+                }
+            ],
             referrer: 'Nahian Alam',
         },
         {
@@ -100,6 +111,7 @@ const initialState = {
 }
 
 const RootReducer = (state = initialState, action) => {
+    let students = state.students;
     switch (action.type) {
         case 'ADD_STUDENT':
             let student = {
@@ -107,7 +119,15 @@ const RootReducer = (state = initialState, action) => {
                 id: state.students.length + 1,
                 entries: [],
             };
-            let students = [...state.students, student]
+            students = [...state.students, student]
+            return { ...state, students }
+        case 'INCREMENT_ENTRY':
+            students = state.students
+            let filteredStudents = students.filter((student) => {
+                return student.id != action.student.id
+            })
+            const studentToEdit = action.student;
+            students = [...filteredStudents, studentToEdit]
             return { ...state, students }
         default:
             console.log('that is not a valid type, check the code');
