@@ -124,7 +124,6 @@ const RootReducer = (state = initialState, action) => {
                 entries: [],
             };
             students = [...state.students, student]
-            // students.sort(a.id,b.id)
             return { ...state, students }
         case 'ADD_ENTRY':
             students = state.students
@@ -133,7 +132,6 @@ const RootReducer = (state = initialState, action) => {
             })
             studentToEdit = action.student;
             students = [...filteredStudents, studentToEdit]
-            students.sort((a, b) => a - b)
             return { ...state, students }
         default:
             console.log('that is not a valid type, check the code');

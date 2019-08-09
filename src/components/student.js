@@ -25,10 +25,23 @@ class Student extends React.Component {
     let filteredEntries = student.entries.filter((entry) => {
       return entry.id !== incrementedEntry.id
     })
+    // let entries = [...student.entries, incrementedEntry]
     let entries = [...filteredEntries, incrementedEntry]
     student = { ...this.props.info, entries }
     this.props.addEntry(student);
   };
+  deleteEntry = entry => {
+    let incrementedEntry = {
+      ...entry,
+      count: entry.count + 1
+    }
+    let student = this.props.info
+    let filteredEntries = student.entries.filter((entry) => {
+      return entry.id !== incrementedEntry.id
+    })
+    student = { ...this.props.info, entries: filteredEntries }
+    this.props.addEntry(student);  
+  }
   render() {
     return (
       <div>
@@ -47,7 +60,7 @@ class Student extends React.Component {
         <EntryField addEntry={this.addEntry} />
         <div>
           {this.props.info.entries.map(entry => (
-            <Entry key={entry.id} incrementEntry={this.incrementEntry} info={entry} />
+            <Entry key={entry.id} incrementEntry={this.incrementEntry} deleteEntry={this.deleteEntry} info={entry} />
           ))}
         </div>
       </div>

@@ -16,7 +16,10 @@ class Entry extends Component {
   };
   incrementEntry = e => {
     this.props.incrementEntry(this.props.info);
-  }
+  };
+  deleteEntry = e => {
+    this.props.deleteEntry(this.props.info);
+  };
 
   render() {
     const count = this.props.info.count
@@ -29,6 +32,7 @@ class Entry extends Component {
             <Tag style={{ fontSize: '1.5em' }} color='green'> {count} </Tag>
         }
         <Button className='ml-2' onClick={this.incrementEntry}> Increment </Button>
+        <Button type='danger' className='ml-2' onClick={this.deleteEntry}> Delete </Button>
       </div>
     );
   }
