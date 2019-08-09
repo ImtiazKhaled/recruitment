@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { Tag, Button, Typography } from 'antd';
 
 
 class Entry extends Component {
@@ -18,16 +19,16 @@ class Entry extends Component {
   }
 
   render() {
+    const count = this.props.info.count
     return (
       <div>
-        <h1 style={{ color: "blue" }}>{this.props.info.note}</h1>
-        <h1>{this.formatCount()}</h1>
-        <button
-          onClick={this.incrementEntry}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
+        <Typography style={{ fontSize: '2em' }}>{this.props.info.note}</Typography>
+        {
+          this.props.info.count === 0 ?
+            <Tag style={{ fontSize: '1.5em' }} color='gold'> {count} </Tag> :
+            <Tag style={{ fontSize: '1.5em' }} color='green'> {count} </Tag>
+        }
+        <Button className='ml-2' onClick={this.incrementEntry}> Increment </Button>
       </div>
     );
   }
