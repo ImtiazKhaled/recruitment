@@ -111,7 +111,9 @@ const initialState = {
 }
 
 const RootReducer = (state = initialState, action) => {
-    let students = state.students;
+    let students = null;
+    let filteredStudents = null;
+    let studentToEdit = null;
     switch (action.type) {
         case 'ADD_STUDENT':
             let student = {
@@ -121,12 +123,12 @@ const RootReducer = (state = initialState, action) => {
             };
             students = [...state.students, student]
             return { ...state, students }
-        case 'INCREMENT_ENTRY':
+        case 'ADD_ENTRY':
             students = state.students
-            let filteredStudents = students.filter((student) => {
-                return student.id != action.student.id
+            filteredStudents = students.filter((student) => {
+                return student.id !== action.student.id
             })
-            const studentToEdit = action.student;
+            studentToEdit = action.student;
             students = [...filteredStudents, studentToEdit]
             return { ...state, students }
         default:

@@ -5,16 +5,9 @@ export const AddStudent = (student) => {
     }
 }
 
-export const AddEntry = (entry) => {
+export const AddEntry = (student) => {
     return {
         type: 'ADD_ENTRY',
-        entry
-    }
-}
-
-export const IncrementEntry = (student) => {
-    return {
-        type: 'INCREMENT_ENTRY',
         student
     }
 }

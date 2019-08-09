@@ -3,12 +3,12 @@ import { Collapse } from "antd";
 import Student from "./student";
 import StudentNew from "./studentNew";
 import { connect } from 'react-redux';
-import { AddStudent, IncrementEntry } from '../redux/rootActions';
+import { AddStudent, AddEntry } from '../redux/rootActions';
 const { Panel } = Collapse;
 
 class Students extends React.Component {
-  addToEntry = student => {
-    this.props.incrementEntry(student);
+  addEntry = student => {
+    this.props.addEntry(student);
   };
   render() {
     return (
@@ -17,7 +17,7 @@ class Students extends React.Component {
         <Collapse>
           {this.props.students.map(student => (
             <Panel header={student.name} key={student.id}>
-              <Student addToEntry={this.addToEntry} addStudent={this.addStudent} info={student} />
+              <Student addEntry={this.addEntry} addStudent={this.addStudent} info={student} />
             </Panel>
           ))}
         </Collapse>
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addStudent: (student) => { dispatch(AddStudent(student)) },
-    incrementEntry: (student) => { dispatch(IncrementEntry(student)) }
+    addEntry: (student) => { dispatch(AddEntry(student)) }
   }
 }
 
