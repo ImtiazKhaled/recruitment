@@ -18,7 +18,7 @@ class StudentNew extends React.Component {
     render() {
         return (
             <div>
-                <Button onClick={() => this.setState({formModal: true})}> Add Student </Button>
+                <Button type='primary' onClick={() => this.setState({formModal: true})}> Add Student </Button>
                 <Modal
                     title="Add Student"
                     centered

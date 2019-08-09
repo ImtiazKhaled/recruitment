@@ -1,4 +1,3 @@
-
 const initialState = {
     students: [
         {
@@ -29,8 +28,9 @@ const initialState = {
             interestLevel: "Alot",
             entries: [
                 {
+                    id: '1',
                     note: 'meeting',
-                    count: '10',
+                    count: 10,
                 }
             ],
             referrer: 'Nahian Alam',
@@ -110,6 +110,8 @@ const initialState = {
     ]
 }
 
+function sortByID(a, b) {return a - b};
+
 const RootReducer = (state = initialState, action) => {
     let students = null;
     let filteredStudents = null;
@@ -122,6 +124,7 @@ const RootReducer = (state = initialState, action) => {
                 entries: [],
             };
             students = [...state.students, student]
+            // students.sort(a.id,b.id)
             return { ...state, students }
         case 'ADD_ENTRY':
             students = state.students
@@ -130,6 +133,7 @@ const RootReducer = (state = initialState, action) => {
             })
             studentToEdit = action.student;
             students = [...filteredStudents, studentToEdit]
+            students.sort((a, b) => a - b)
             return { ...state, students }
         default:
             console.log('that is not a valid type, check the code');

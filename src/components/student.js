@@ -1,6 +1,8 @@
 import React from "react";
 import Entry from "./entry";
 import { EntryField } from "./entryField";
+import { Typography } from 'antd';
+const { Title } = Typography;
 
 class Student extends React.Component {
   addEntry = entry => {
@@ -30,11 +32,19 @@ class Student extends React.Component {
   render() {
     return (
       <div>
+        <Title style={{fontSize: '1.5em'}}>
+          Phone Number:  {this.props.info.phone}
+        </Title>
+        <Title style={{fontSize: '1.5em'}}>
+          Notes:  {this.props.info.notes}
+        </Title>
+        <Title style={{fontSize: '1.5em'}}>
+          Interest Level:  {this.props.info.interestLevel}
+        </Title>
+        <Title style={{fontSize: '1.5em'}}>
+          Reffered By:  {this.props.info.referrer}
+        </Title>
         <EntryField addEntry={this.addEntry} />
-        <h1>{this.props.info.phone}</h1>
-        <h2>{this.props.info.notes}</h2>
-        <h2>{this.props.info.interestLevel}</h2>
-        <h2>{this.props.info.referrer}</h2>
         <div>
           {this.props.info.entries.map(entry => (
             <Entry key={entry.id} incrementEntry={this.incrementEntry} info={entry} />
